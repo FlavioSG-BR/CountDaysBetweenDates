@@ -2,7 +2,6 @@ function daysBetweenDates(year1, month1, day1, year2, month2, day2) {
     const daysBetweenYears = DaysBetweenYears(year1, year2);
     const daysBetweenMonths = DaysBetweenMonths(month1, month2, year1, year2);
     const daysBetweenDays = DaysBetweenDays(year1, month1, day1, day2);
-    console.log({daysBetweenYears})
     const daysToCount = daysBetweenDays + daysBetweenMonths + daysBetweenYears;
     
     return daysToCount;
@@ -13,16 +12,13 @@ const yearsDaysBiss = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 function DaysBetweenYears(year1, year2) {
     const years = year2 - year1
-    console.log({years})
     let yearsToCount = [];
     for(i = 0; i <= years; i++){
         yearsToCount.push(year1+i)
     }
-    console.log({yearsToCount})
 
     yearsToCount.pop()
     yearsToCount.shift()
-    console.log({yearsToCountfinal: yearsToCount})
     let days = 0
     yearsToCount.map(year => {
         IsBissexto(year)? days += 366: days += 365;
@@ -75,8 +71,6 @@ function DaysBetweenYears(year1, year2) {
                   [[1900,1,1,1999,12,31], 36523]];
     testCases.forEach(([args, answer]) => {
       const result = daysBetweenDates(...args);
-      console.log({result})
-      console.log({answer})
       if (result != answer) {
         console.log(`Test with data: ${args}, failed`);
       } else {
